@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import TodoList from './components/TodoList';
 
 TodoFeature.propTypes = {
-    
+
 };
 
 function TodoFeature(props) {
     const initTodoList = [
         {
-            id : 1,
+            id: 1,
             title: 'Eat',
             status: 'new'
         },
         {
-            id : 2,
+            id: 2,
             title: 'Sleep',
             status: 'completed'
         },
         {
-            id : 3,
+            id: 3,
             title: 'Code',
             status: 'new'
         },
@@ -44,6 +44,18 @@ function TodoFeature(props) {
         setTodoList(newTodoList)
     }
 
+    //Delete item
+    const handleDeleteTodo = (todo) => {
+        const index = todoList.findIndex(x => x.id === todo.id)
+        if (index < 0) return;
+
+        const newTodoDelete = [...todoList]
+        console.log(index)
+        newTodoDelete.splice(index, 1)
+        setTodoList(newTodoDelete)
+
+    }
+
     const handleShowAllClick = () => {
         setFilteredStatus('all')
     }
@@ -60,7 +72,7 @@ function TodoFeature(props) {
     return (
         <div>
             <h3>Todo List</h3>
-            <TodoList danhsach={renderedTodoList} onTodoClick={handleTodoClick}/>
+            <TodoList danhsach={renderedTodoList} onTodoClick={handleTodoClick} onDeleteClick={handleDeleteTodo} />
 
             <div>
                 <button onClick={handleShowAllClick}>Show All</button>
