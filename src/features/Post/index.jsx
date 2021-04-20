@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PostList from './components/PostList';
 import Pagination from '../../components/Pagination';
 import queryString from 'query-string';
+import PostFilterForm from '../../components/PostFilterForm';
 
 PostFeature.propTypes = {
     
@@ -18,7 +19,7 @@ function PostFeature(props) {
     });
     const [filters, setFilters] = useState({
         _limit: 10,
-        _page: 1
+        _page: 1,
 
     })
 
@@ -26,7 +27,7 @@ function PostFeature(props) {
         console.log('New page', newPage)
         setFilters({
             ...filters,
-            _page: newPage
+            _page: newPage,
         })
     }
 
@@ -53,9 +54,19 @@ function PostFeature(props) {
         fetchPostList();
     }, [filters])
 
+    function handleFilterChange(newFilters){
+        console.log('New filters:', newFilters);
+        setFilters({
+            ...filters,
+            _page: 1,
+            title_like: newFilters.searchTerm,
+        })
+    }
+
     return (
         <div>
             <h1>React Hook - Post List</h1>
+            <PostFilterForm onSubmit={handleFilterChange} />
             <PostList posts={postList} />
             <Pagination
                 pagination={pagination}
