@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import BetterClock from './components/BetterClock';
 import Clock from './components/Clock';
+import MagicBox from './components/MagicBox';
 import AlbumFeature from './features/Album';
 import ColorBox from './features/ColorBox';
 import PostFeature from './features/Post';
@@ -14,10 +15,11 @@ function App() {
 
   return (
     <div className="App">
-      {showClock && <Clock />}
+      <MagicBox />
+      {/* {showClock && <Clock />}
       <BetterClock />
       <button onClick={() => setShowClock(false)}>Hide clock</button>
-      <PostFeature />
+      <PostFeature /> */}
       {/* <TodoFeature />
       <AlbumFeature />
       <ColorBox /> */}
