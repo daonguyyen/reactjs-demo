@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import BetterClock from './components/BetterClock';
 import Clock from './components/Clock';
 import AlbumFeature from './features/Album';
 import ColorBox from './features/ColorBox';
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       {showClock && <Clock />}
+      <BetterClock />
       <button onClick={() => setShowClock(false)}>Hide clock</button>
       <PostFeature />
       {/* <TodoFeature />
