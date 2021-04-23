@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Route } from 'react-router';
+import { Link, NavLink } from 'react-router-dom';
 import BetterClock from './components/BetterClock';
 import Clock from './components/Clock';
 import MagicBox from './components/MagicBox';
@@ -17,6 +18,24 @@ function App() {
   return (
     <div className="App">
       Header
+
+      {/* Menu Link : link neu muon di chuyen trang nao do, navlink lam menu de co class active */}
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="todos">Todo</NavLink>
+        </li>
+        <li>
+          <NavLink to="better-clock">Better Clock</NavLink>
+        </li>
+        <li><NavLink to="magic-box">Magic Box</NavLink></li>
+        <li><NavLink to="post">Post List</NavLink></li>
+        <li><NavLink to="albums">Albums Music</NavLink></li>
+        <li><NavLink to="color-box">Color Box</NavLink></li>
+      </ul>
+
       {showClock && <Clock />}
       <button onClick={() => setShowClock(false)}>Hide clock</button>
 
