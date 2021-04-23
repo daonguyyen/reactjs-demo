@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Route } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
 import BetterClock from './components/BetterClock';
 import Clock from './components/Clock';
@@ -39,12 +39,18 @@ function App() {
       {showClock && <Clock />}
       <button onClick={() => setShowClock(false)}>Hide clock</button>
 
-      <Route path='/better-clock' component={BetterClock} />
-      <Route path='/magic-box' component={MagicBox} />
-      <Route path='/post' component={PostFeature} />
-      <Route path='/todos' component={TodoFeature} />
-      <Route path='/albums' component={AlbumFeature} />
-      <Route path='/color-box' component={ColorBox} />
+      <Switch>
+        <Redirect from='/home' to='/#' />
+        <Redirect from='/post' to='/' exact />
+
+        {/* <Route path='/' component={Clock} exact /> */}
+        <Route path='/better-clock' component={BetterClock} />
+        <Route path='/magic-box' component={MagicBox} />
+        <Route path='/post' component={PostFeature} />
+        <Route path='/todos' component={TodoFeature} />
+        <Route path='/albums' component={AlbumFeature} />
+        <Route path='/color-box' component={ColorBox} />
+      </Switch>
       Footer
     </div>
   );
