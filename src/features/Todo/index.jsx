@@ -5,6 +5,7 @@ import TodoForm from './components/TodoForm';
 import ListPage from './Pages/ListPage';
 import DetailPage from './Pages/DetailPage';
 import { Route, Switch, useRouteMatch } from 'react-router';
+import NotFound from '../../components/NotFound';
 
 
 TodoFeature.propTypes = {
@@ -18,7 +19,9 @@ function TodoFeature(props) {
         <div>
             <Switch>
                 <Route path={match.path} component={ListPage} exact />
-                <Route path={`${match.path}/:todoId`} component={DetailPage} />
+                <Route path={`${match.path}/:todoId`} component={DetailPage} exact />
+
+                <Route component={NotFound} />
             </Switch>
         </div>
     );

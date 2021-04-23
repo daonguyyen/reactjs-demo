@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import BetterClock from './components/BetterClock';
 import Clock from './components/Clock';
 import MagicBox from './components/MagicBox';
+import NotFound from './components/NotFound';
 import AlbumFeature from './features/Album';
 import ColorBox from './features/ColorBox';
 import PostFeature from './features/Post';
@@ -43,13 +44,15 @@ function App() {
         <Redirect from='/home' to='/#' />
         <Redirect from='/post' to='/' exact />
 
-        {/* <Route path='/' component={Clock} exact /> */}
+        <Route path='/' component={Clock} exact />
         <Route path='/better-clock' component={BetterClock} />
         <Route path='/magic-box' component={MagicBox} />
         <Route path='/post' component={PostFeature} />
         <Route path='/todos' component={TodoFeature} />
         <Route path='/albums' component={AlbumFeature} />
         <Route path='/color-box' component={ColorBox} />
+
+        <Route component={NotFound} />
       </Switch>
       Footer
     </div>
