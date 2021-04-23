@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Route } from 'react-router';
 import BetterClock from './components/BetterClock';
 import Clock from './components/Clock';
 import MagicBox from './components/MagicBox';
@@ -15,14 +16,17 @@ function App() {
 
   return (
     <div className="App">
-      <MagicBox />
-      {/* {showClock && <Clock />}
-      <BetterClock />
+      Header
+      {showClock && <Clock />}
       <button onClick={() => setShowClock(false)}>Hide clock</button>
-      <PostFeature /> */}
-      {/* <TodoFeature />
-      <AlbumFeature />
-      <ColorBox /> */}
+
+      <Route path='/better-clock' component={BetterClock} />
+      <Route path='/magic-box' component={MagicBox} />
+      <Route path='/post' component={PostFeature} />
+      <Route path='/todos' component={TodoFeature} />
+      <Route path='/albums' component={AlbumFeature} />
+      <Route path='/color-box' component={ColorBox} />
+      Footer
     </div>
   );
 }
