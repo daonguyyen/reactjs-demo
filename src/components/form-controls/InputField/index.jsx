@@ -18,7 +18,7 @@ function InputField(props) {
             name={name}
             control={form.control}
             render = {({ field})=> (
-                <TextField
+                <TextField {...field}
                     fullWidth
                     label={label}
                     disabled={disabled}

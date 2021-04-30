@@ -4,16 +4,38 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import InputField from '../../../../components/form-controls/InputField';
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar, Button, makeStyles, Typography } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
+import PasswordField from '../../../../components/form-controls/PasswordField';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        paddingTop: theme.spacing(4)
+    },
+    avatar : {
+        margin: '0 auto',
+        backgroundColor: theme.palette.secondary.main,
+
+    },
+    title: {
+        margin: theme.spacing(2,0,3,0),
+        textAlign: 'center',
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2)
+    }
+}))
 
 RegisterForm.propTypes = {
     onSubmit: PropTypes.func,
 };
 
 function RegisterForm(props) {
+
+    const classes = useStyles()
+
     const schema = yup.object().shape({
-        title : yup.string().required('Please enter title').min(5, 'Title is too short'),
+        
     });
     const form = useForm({
         defaultValues: {
@@ -34,19 +56,20 @@ function RegisterForm(props) {
         form.reset();
     }
     return (
-        <div>
-            <Avatar>
+        <div className={classes.root}>
+            <Avatar className={classes.avatar}>
                 <LockOutlined></LockOutlined>
             </Avatar>
-            <Typography component="h3" variant="h5">
+            <Typography className={classes.title} component="h3" variant="h5">
                 Create an Account
             </Typography>
 
             <form onSubmit={form.handleSubmit(handleSubmit)}>
                 <InputField name="fullname" label="Full Name" form={form} />
                 <InputField name="email" label="Email" form={form} />
-                <InputField name="password" label="Password" form={form} />
-                <InputField name="retypePassword" label="Retype Password" form={form} />
+                <PasswordField name="password" label="Password" form={form} />
+                <PasswordField name="retypePassword" label="Retype Password" form={form} />
+                <Button type="submit" className={classes.submit} variant="contained" color="primary" fullWidth>Create an account</Button>
             </form>
         </div>
     );
