@@ -8,6 +8,7 @@ import MagicBox from './components/MagicBox';
 import NotFound from './components/NotFound';
 import AlbumFeature from './features/Album';
 import ColorBox from './features/ColorBox';
+import CounterFeature from './features/Counter';
 import PostFeature from './features/Post';
 import TodoFeature from './features/Todo';
 import TodoForm from './features/Todo/components/TodoForm';
@@ -44,7 +45,8 @@ function App() {
         <Redirect from='/home' to='/#' />
         <Redirect from='/post' to='/' exact />
 
-        <Route path='/' component={Clock} exact />
+        {/* <Route path='/' component={Clock} exact /> */}
+        <Route path='/' component={CounterFeature} exact />
         <Route path='/better-clock' component={BetterClock} />
         <Route path='/magic-box' component={MagicBox} />
         <Route path='/post' component={PostFeature} />
@@ -54,7 +56,7 @@ function App() {
 
         <Route component={NotFound} />
       </Switch>
-      Footer
+      {/* Footer */}
     </div>
   );
 }
