@@ -62,10 +62,17 @@ export default function Header() {
         </Toolbar>
       </AppBar>
 
-      <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog 
+        disableBackdropClick 
+        disableEscapeKeyDown 
+        open={open} 
+        onClose={handleClose} 
+        aria-labelledby="form-dialog-title"
+      >
         <DialogContent>
-          <Register />
+          <Register closeDialog={handleClose}/>
         </DialogContent>
+
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
