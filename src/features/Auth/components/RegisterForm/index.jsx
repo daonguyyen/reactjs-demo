@@ -103,7 +103,15 @@ function RegisterForm(props) {
                 <InputField name="email" label="Email" form={form} />
                 <PasswordField name="password" label="Password" form={form} />
                 <PasswordField name="retypePassword" label="Retype Password" form={form} />
-                <Button disabled={isSubmitting} type="submit" className={classes.submit} variant="contained" color="primary" fullWidth>Create an account</Button>
+                <Button 
+                disabled={isSubmitting} 
+                type="submit" 
+                className={classes.submit} 
+                variant="contained" 
+                color="primary" 
+                fullWidth
+                size="large"
+                >Create an account</Button>
             </form>
         </div>
     );
