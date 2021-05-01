@@ -1,3 +1,4 @@
+import { FormHelperText } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -19,8 +20,9 @@ PasswordField.propTypes = {
 
 function PasswordField(props) {
     const { form, name, label, disabled } = props;
-    // const { errors, formState } = form;
-    // const hasError = formState.touched[name] && errors[name];
+    const { formState } = form;
+    const {errors} = form.formState;
+    const hasError = errors[name];
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -51,12 +53,12 @@ function PasswordField(props) {
                             </InputAdornment>
                         }
                         disabled={disabled}
-
-
+                        error={!!hasError}
                     />
                 )}
 
             />
+            <FormHelperText error={!!hasError} >{errors[name]?.message}</FormHelperText>
         </FormControl>
     );
 }
