@@ -3,6 +3,8 @@
  import userApi from '../../api/userApi'
 
 // First, create the thunk
+
+//Register
 export const register = createAsyncThunk(
     'user/register',
     async (payload) => {
@@ -17,6 +19,22 @@ export const register = createAsyncThunk(
     }
   )
 
+
+//Login
+export const login = createAsyncThunk(
+  'user/login',
+  async (payload) => {
+    //call api to login
+      const data = await userApi.login(payload);
+    //save data tp local storage
+    localStorage.setItem('access_token', data.jwt);
+    localStorage.setItem('user', JSON.stringify(data.user))
+
+    //return user data
+    return data.user;
+  }
+)
+
 const userSlice =  createSlice({
     name: 'user',
     initialState: {
@@ -27,7 +45,10 @@ const userSlice =  createSlice({
     extraReducers: {
         [register.fulfilled] : (state, action) => {
             state.current  = action.payload;
-        }
+        },
+        [login.fulfilled] : (state, action) => {
+          state.current  = action.payload;
+      }
     }
 });
 
