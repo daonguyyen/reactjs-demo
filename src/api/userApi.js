@@ -7,4 +7,11 @@ const userApi = {
     },
 };
 
+const userApi = {
+    login(data) {
+        const url = './auth/local';
+        return axiosClient.post(url, data)
+    },
+};
+
 export default userApi;
