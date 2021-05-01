@@ -34,7 +34,8 @@ function Register(props) {
             console.log('New user:', user); 
             enqueueSnackbar('Register successfully', {variant: 'success'});
         } catch (error) {
-            console.log('Failed to register:', error)
+            // console.log('Failed to register:', error)
+            enqueueSnackbar(error.message, {variant: 'error'});
         }
     }
     return (

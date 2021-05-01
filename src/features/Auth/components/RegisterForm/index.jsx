@@ -83,7 +83,7 @@ function RegisterForm(props) {
             await onSubmit(values)
         }
 
-        form.reset();
+        // form.reset();
     }
     //Loading
     const {isSubmitting} = form.formState
