@@ -12,10 +12,11 @@ import Typography from '@material-ui/core/Typography';
 import { AccountCircle, Close } from '@material-ui/icons';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import Login from '../../features/Auth/components/Login';
 import Register from '../../features/Auth/components/Register';
+import { logout } from '../../features/Auth/userSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +48,7 @@ const MODE = {
 };
 
 export default function Header() {
+  const dispatch = useDispatch();
   const loggedInUser = useSelector(state => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
     const [open, setOpen] = useState(false);
@@ -67,6 +69,11 @@ export default function Header() {
 
   const handleCloseMenu = () => {
     setAnchorEl(null);
+  }
+
+  const handleLogOutClick = () => {
+    const action = logout();
+    dispatch(action);
   }
 
   const classes = useStyles();
@@ -116,7 +123,7 @@ export default function Header() {
         getContentAnchorEl={null}
       >
         <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
-        <MenuItem onClick={handleCloseMenu}>Logout</MenuItem>
+        <MenuItem onClick={handleLogOutClick}>Logout</MenuItem>
       </Menu>
 
       <Dialog 
